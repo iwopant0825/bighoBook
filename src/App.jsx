@@ -1,7 +1,4 @@
-import {
-  Scroll,
-  ScrollControls,
-} from "@react-three/drei";
+import { Scroll, ScrollControls } from "@react-three/drei";
 import ScrollManager from "./components/ScrollManager";
 import Scene from "./components/Scene";
 import Over from "./components/Over";
@@ -10,20 +7,31 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function App() {
-  const [sceneAn, setSceneAn] = useState(1)
+  const [sceneAn, setSceneAn] = useState(1);
+
   return (
     <Layout>
-      <Canvas style={{ position: "absolute" }}>
-        <ambientLight />
+      <Canvas shadows style={{ position: "absolute" }}>
+        <color attach={'background'} args={['#dfdfdf']}/>
         <ScrollControls pages={5} damping={0.2}>
           <ScrollManager />
-          <Scene sceneAn={sceneAn}/>
-          <Scroll html style={{ width: "100%" }}>
-            <Over setSceneAn={setSceneAn}/>
+          <Scene sceneAn={sceneAn} />
+          <Scroll html style={{ width: "100%", position: "relative" }}>
+            <Over setSceneAn={setSceneAn} />
           </Scroll>
         </ScrollControls>
       </Canvas>
     </Layout>
+  );
+}
+
+function FixPage() {
+  return (
+    <>
+      <div style={{ height: "100vh", width: "100%", position: "absolute" }}>
+        werwerwarwa
+      </div>
+    </>
   );
 }
 
